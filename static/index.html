@@ -8,12 +8,12 @@
   </head>
   <body>
     <main class="app-shell">
-      <aside class="sidebar" aria-label="Support queue">
+      <aside class="sidebar" aria-label="Support operations">
         <div class="brand-row">
           <div class="brand-mark" aria-hidden="true">AI</div>
           <div>
             <h1>SupportBot</h1>
-            <p>Customer assistance console</p>
+            <p>Customer support workspace</p>
           </div>
         </div>
 
@@ -25,7 +25,19 @@
               <dd id="openTickets">0</dd>
             </div>
             <div>
-              <dt>Last intent</dt>
+              <dt>Total tickets</dt>
+              <dd id="totalTickets">0</dd>
+            </div>
+            <div>
+              <dt>Priority</dt>
+              <dd id="priorityLevel">Normal</dd>
+            </div>
+            <div>
+              <dt>Sentiment</dt>
+              <dd id="sentiment">Neutral</dd>
+            </div>
+            <div>
+              <dt>Intent</dt>
               <dd id="lastIntent">Ready</dd>
             </div>
             <div>
@@ -39,9 +51,21 @@
           <h2>Quick Checks</h2>
           <div class="quick-grid">
             <button type="button" data-prompt="Track order 1001">Track 1001</button>
-            <button type="button" data-prompt="What is your refund policy?">Refund</button>
-            <button type="button" data-prompt="My payment failed">Payment</button>
+            <button type="button" data-prompt="Payment failed and money debited">Payment</button>
+            <button type="button" data-prompt="My order is damaged, create ticket">Damaged</button>
             <button type="button" data-prompt="I want to talk to an agent">Agent</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Knowledge</h2>
+          <div class="knowledge-list" id="knowledgeList"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Recent Tickets</h2>
+          <div class="ticket-list" id="ticketList">
+            <p class="muted">No tickets yet</p>
           </div>
         </section>
       </aside>
@@ -52,9 +76,12 @@
             <p class="eyebrow">AI chatbot</p>
             <h2>Customer Support</h2>
           </div>
-          <div class="status-pill">
-            <span aria-hidden="true"></span>
-            Online
+          <div class="status-stack">
+            <div class="status-pill">
+              <span aria-hidden="true"></span>
+              Online
+            </div>
+            <small id="answerType">Ready</small>
           </div>
         </header>
 
@@ -67,7 +94,7 @@
           <input id="customerName" name="customerName" type="text" value="Guest" autocomplete="name" />
           <label for="messageInput" class="visually-hidden">Message</label>
           <input id="messageInput" name="messageInput" type="text" placeholder="Ask about orders, refunds, payments, or account access" autocomplete="off" />
-          <button type="submit">Send</button>
+          <button type="submit" id="sendButton">Send</button>
         </form>
       </section>
     </main>

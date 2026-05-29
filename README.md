@@ -1,15 +1,17 @@
 # AI Customer Support Chatbot
 
-A complete Python customer-support chatbot project for the programming task.
+A polished Python customer-support chatbot project with a browser dashboard, ticket workflow, order lookup, and API endpoints.
 
-## What it includes
+## Next-level features
 
-- Natural-language intent detection for support topics.
-- Predefined responses for FAQs such as delivery, refunds, payments, account help, and support hours.
-- Generated fallback responses for unknown customer queries.
-- API-style endpoints for chat, order lookup, health checks, and ticket creation.
-- Simple support ticket storage using SQLite.
-- Browser-based chat UI.
+- Intent detection for delivery, refunds, payments, accounts, invoices, complaints, and agent handoff.
+- Knowledge-base matching with answer sources and next-step guidance.
+- Sentiment and priority detection for support triage.
+- Order lookup through mock API-style data.
+- Ticket creation with SQLite storage, priority, sentiment, intent, and recent-ticket analytics.
+- Dashboard UI with live context, knowledge actions, recent tickets, chat metadata, and order cards.
+- Dependency-free Python backend using only the standard library.
+- Unit tests for key chatbot behavior.
 
 ## Run
 
@@ -23,13 +25,19 @@ Open:
 http://127.0.0.1:8000
 ```
 
+If port 8000 is busy:
+
+```powershell
+python main.py 8001
+```
+
 ## Try these messages
 
 ```text
 Track order 1001
-What is your refund policy?
-My payment failed
-Create ticket: my package arrived damaged
+Payment failed and money debited
+My order is damaged, create ticket
+Need invoice for order 1002
 I forgot my password
 I want to talk to an agent
 ```
@@ -37,6 +45,14 @@ I want to talk to an agent
 ## API examples
 
 ```powershell
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/api/chat -ContentType "application/json" -Body '{"name":"Guest","message":"Track order 1001"}'
-Invoke-RestMethod http://127.0.0.1:8000/api/orders/1001
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8001/api/chat -ContentType "application/json" -Body '{"name":"Guest","message":"Track order 1001"}'
+Invoke-RestMethod http://127.0.0.1:8001/api/orders/1001
+Invoke-RestMethod http://127.0.0.1:8001/api/analytics
+Invoke-RestMethod http://127.0.0.1:8001/api/knowledge
+```
+
+## Tests
+
+```powershell
+python -m unittest
 ```
