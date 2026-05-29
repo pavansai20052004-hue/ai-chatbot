@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Customer Support Chatbot</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Support queue">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">AI</div>
+          <div>
+            <h1>SupportBot</h1>
+            <p>Customer assistance console</p>
+          </div>
+        </div>
+
+        <section class="panel">
+          <h2>Live Context</h2>
+          <dl class="stats">
+            <div>
+              <dt>Open tickets</dt>
+              <dd id="openTickets">0</dd>
+            </div>
+            <div>
+              <dt>Last intent</dt>
+              <dd id="lastIntent">Ready</dd>
+            </div>
+            <div>
+              <dt>Confidence</dt>
+              <dd id="confidence">--</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel">
+          <h2>Quick Checks</h2>
+          <div class="quick-grid">
+            <button type="button" data-prompt="Track order 1001">Track 1001</button>
+            <button type="button" data-prompt="What is your refund policy?">Refund</button>
+            <button type="button" data-prompt="My payment failed">Payment</button>
+            <button type="button" data-prompt="I want to talk to an agent">Agent</button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="chat-area" aria-label="Chat conversation">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">AI chatbot</p>
+            <h2>Customer Support</h2>
+          </div>
+          <div class="status-pill">
+            <span aria-hidden="true"></span>
+            Online
+          </div>
+        </header>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+
+        <div class="suggestions" id="suggestions" aria-label="Suggested replies"></div>
+
+        <form class="composer" id="chatForm">
+          <label for="customerName" class="visually-hidden">Customer name</label>
+          <input id="customerName" name="customerName" type="text" value="Guest" autocomplete="name" />
+          <label for="messageInput" class="visually-hidden">Message</label>
+          <input id="messageInput" name="messageInput" type="text" placeholder="Ask about orders, refunds, payments, or account access" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
