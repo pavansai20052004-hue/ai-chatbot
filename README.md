@@ -2,7 +2,7 @@
 
 A polished Python customer-support chatbot project with a browser dashboard, ticket workflow, order lookup, and API endpoints.
 
-## Next-level features
+## Next-level feature
 
 - Intent detection for delivery, refunds, payments, accounts, invoices, complaints, and agent handoff.
 - Knowledge-base matching with answer sources and next-step guidance.
